@@ -1,0 +1,296 @@
+
+/* Login-only visual refresh. No shared application styles are changed. */
+
+.queue-login {
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 24px 16px;
+  background: radial-gradient(
+    ellipse at 52% 47%,
+    #e8f3ff 0%,
+    #f2f8ff 43%,
+    #fbfdff 83%
+  );
+  color: #102b5c;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.queue-login::before,
+.queue-login::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+  border: 1px solid #a8cbff;
+}
+
+.queue-login::before {
+  width: 710px;
+  height: 710px;
+  left: -390px;
+  bottom: -440px;
+  box-shadow:
+    0 0 0 100px #d5e8ff88,
+    0 0 0 205px #e5f1ff77;
+  background: linear-gradient(45deg, #83b7f5aa, #e5f2ff44);
+}
+
+.queue-login::after {
+  width: 540px;
+  height: 540px;
+  right: -290px;
+  top: -350px;
+  box-shadow:
+    0 0 0 80px #b5d4ff88,
+    0 0 0 155px #dbeaff77;
+  background: linear-gradient(135deg, #1766d8cc, #9bc8ff88);
+}
+
+/* Compact login card */
+.queue-login-card {
+  box-sizing: border-box;
+  width: min(420px, 100%);
+  background: #ffffffed;
+  border: 1px solid #dbe9fa;
+  border-radius: 18px;
+  padding: 24px 30px;
+  display: grid;
+  gap: 10px;
+  box-shadow: 0 18px 55px #3673bc22;
+  position: relative;
+}
+
+.queue-login-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.queue-login-brand strong {
+  font-size: 22px;
+  letter-spacing: 1px;
+  font-weight: 800;
+  color: #102f69;
+}
+
+.queue-login-logo {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #0862e8, #0751cc);
+  color: white;
+  border-radius: 13px;
+  box-shadow: 0 6px 14px #1b66d62b;
+}
+
+.queue-login-accent {
+  width: 58px;
+  height: 3px;
+  background: #1261ea;
+  border-radius: 10px;
+}
+
+.queue-login-card h1 {
+  font-size: 22px;
+  text-align: center;
+  margin: 3px 0 0;
+  color: #102f69;
+}
+
+.queue-login-card .queue-login-subtitle {
+  font-size: 13px;
+  text-align: center;
+  color: #7589a9;
+  margin: -5px 0 6px;
+}
+
+.queue-login-card > label {
+  font-size: 13px;
+  font-weight: 650;
+  color: #122f60;
+}
+
+.queue-login-card > input,
+.queue-login-password input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cedcf0;
+  border-radius: 8px;
+  background: #fff;
+  color: #102f69;
+  font: inherit;
+  outline: none;
+  min-height: 42px;
+}
+
+.queue-login-card > input:focus,
+.queue-login-password input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px #2563eb19;
+}
+
+.queue-login-card button {
+  cursor: pointer;
+}
+
+.queue-login-password {
+  display: flex;
+  position: relative;
+}
+
+.queue-login-password input {
+  padding-right: 48px;
+}
+
+.queue-login-password button {
+  position: absolute;
+  right: 8px;
+  top: 4px;
+  bottom: 4px;
+  border: 0;
+  background: transparent;
+  color: #6980a2;
+  padding: 7px;
+}
+
+.queue-login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  margin: 2px 0 4px;
+}
+
+.queue-login-options label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.queue-login-options input {
+  accent-color: #155cde;
+}
+
+.queue-login-options button {
+  background: none;
+  border: 0;
+  color: #075be0;
+  font-size: 12px;
+}
+
+.queue-login-submit {
+  min-height: 43px;
+  padding: 9px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(100deg, #095fe2, #1458d7);
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: 0 5px 12px #2563eb1f;
+}
+
+.queue-login-submit:hover {
+  filter: brightness(1.06);
+}
+
+.queue-login-card .queue-login-error {
+  color: #dc2626;
+  margin: 0;
+  font-size: 12px;
+}
+
+.queue-login-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0008;
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.queue-login-dialog {
+  background: var(--bg-card, #fff);
+  color: var(--text-main, #102f69);
+  border: 1px solid var(--border-color, #dbe9fa);
+  border-radius: 12px;
+  padding: 24px;
+  width: min(380px, 100%);
+  box-sizing: border-box;
+}
+
+.queue-login-dialog h2 {
+  margin: 0;
+}
+
+.queue-login-dialog p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.queue-login-dialog button {
+  background: #2563eb;
+  color: white;
+  border: 0;
+  border-radius: 7px;
+  padding: 9px 18px;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .queue-login {
+    padding: 16px 12px;
+  }
+
+  .queue-login-card {
+    width: 100%;
+    padding: 22px 20px;
+    border-radius: 16px;
+  }
+
+  .queue-login-brand strong {
+    font-size: 20px;
+  }
+
+  .queue-login-logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .queue-login-card h1 {
+    font-size: 21px;
+  }
+
+  .queue-login::before {
+    left: -560px;
+  }
+
+  .queue-login::after {
+    right: -430px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .queue-login * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
